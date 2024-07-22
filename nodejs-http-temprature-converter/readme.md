@@ -26,7 +26,7 @@ npm start
 
 ```shell
 curl localhost:8080 \
-  -X GET \
+  -X POST \
   --data-urlencode "temp=80"
 ```
 
@@ -38,7 +38,7 @@ gcloud auth application-default login
 ```
 
 * Deploy a Cloud Function
-```
+```shell
 gcloud functions deploy li-nodejs-http-temprature-converter \
 --gen2 \
 --runtime=nodejs20 \
@@ -57,12 +57,13 @@ gcloud functions describe li-nodejs-http-temprature-converter --gen2 --region us
 
 * Test the Cloud Function
 ```shell
-curl -X GET https://li-nodejs-http-temprature-converter-7bst74hona-uc.a.run.app \
+curl https://li-nodejs-http-temprature-converter-7bst74hona-uc.a.run.app \
+    -X POST \
     -H "Authorization: Bearer $(gcloud auth print-identity-token)" \
     --data-urlencode "temp=80"
 ```
 
 * clean up if needed
-```
+```shell
 gcloud functions delete li-nodejs-http-temprature-converter --gen2 --region us-central1
 ```
