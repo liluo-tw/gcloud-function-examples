@@ -1,6 +1,7 @@
 # Mono repo for cloud functions
+This is a mono repo to accommodate all kinds of google cloud functions during practice.
 
-## Basic requirement
+## Basic requirement for each cloud function
 Each function should
 * Be independent with each other
 * Can be deploy separately
