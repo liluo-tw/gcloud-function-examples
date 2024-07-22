@@ -49,6 +49,7 @@ gcloud functions deploy nodejs-http-trigger \
 --source=. \
 --entry-point=entry \
 --memory=512MB \
+--allow-unauthenticated \
 --trigger-http 
 ```
 
@@ -60,9 +61,8 @@ gcloud functions describe nodejs-http-trigger --gen2 --region us-central1 --form
 
 * Test the Cloud Function
 ```shell
-curl https://nodejs-http-trigger-7bst74hona-uc.a.run.app \
+curl CLOUD_FUNC_URL \
     -X POST \
-    -H "Authorization: Bearer $(gcloud auth print-identity-token)" \
     -H "Content-Type: application/json" \
     -d '{
         "temp": 100
