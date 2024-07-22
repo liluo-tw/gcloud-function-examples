@@ -27,7 +27,10 @@ npm start
 ```shell
 curl localhost:8080 \
   -X POST \
-  --data-urlencode "temp=80"
+  -H "Content-Type: application/json" \
+  -d '{
+        "temp": 100
+      }'
 ```
 
 
@@ -39,12 +42,12 @@ gcloud auth application-default login
 
 * Deploy a Cloud Function
 ```shell
-gcloud functions deploy li-nodejs-http-temprature-converter \
+gcloud functions deploy nodejs-http-trigger \
 --gen2 \
 --runtime=nodejs20 \
 --region=us-central1 \
 --source=. \
---entry-point=convertTemp \
+--entry-point=entry \
 --memory=512MB \
 --trigger-http 
 ```
@@ -52,18 +55,21 @@ gcloud functions deploy li-nodejs-http-temprature-converter \
 
 * Get a Cloud Function uri
 ```shell
-gcloud functions describe li-nodejs-http-temprature-converter --gen2 --region us-central1 --format="value(serviceConfig.uri)"
+gcloud functions describe nodejs-http-trigger --gen2 --region us-central1 --format="value(serviceConfig.uri)"
 ```
 
 * Test the Cloud Function
 ```shell
-curl https://li-nodejs-http-temprature-converter-7bst74hona-uc.a.run.app \
+curl https://nodejs-http-trigger-7bst74hona-uc.a.run.app \
     -X POST \
     -H "Authorization: Bearer $(gcloud auth print-identity-token)" \
-    --data-urlencode "temp=80"
+    -H "Content-Type: application/json" \
+    -d '{
+        "temp": 100
+      }'
 ```
 
 * clean up if needed
 ```shell
-gcloud functions delete li-nodejs-http-temprature-converter --gen2 --region us-central1
+gcloud functions delete nodejs-http-trigger --gen2 --region us-central1
 ```

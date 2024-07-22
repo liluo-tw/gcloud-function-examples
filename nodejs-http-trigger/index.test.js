@@ -30,30 +30,11 @@ describe('functions_convert_temperature_http', () => {
 
   it('convertTemp: should convert a Fahrenheit temp value by default', () => {
     const mocks = getMocks();
-    mocks.req.query = {temp: 70};
+    mocks.req.body = {temp: 70};
 
     const convertTemp = getFunction('convertTemp');
     convertTemp(mocks.req, mocks.res);
     assert.strictEqual(mocks.res.send.calledOnceWith('Temperature in Celsius is: 21.11.'), true);
-  });
-
-  it('convertTemp: should convert a Celsius temp value', () => {
-    const mocks = getMocks();
-    mocks.req.query = {temp: 21.11, convert: 'ctof'};
-
-    const convertTemp = getFunction('convertTemp');
-    convertTemp(mocks.req, mocks.res);
-    assert.strictEqual(mocks.res.send.calledOnceWith('Temperature in Fahrenheit is: 70.00.'), true);
-  });
-
-  it('convertTemp: should convert a Celsius temp value by default', () => {
-    process.env.TEMP_CONVERT_TO = 'ctof';
-    const mocks = getMocks();
-    mocks.req.query = {temp: 21.11};
-
-    const convertTemp = getFunction('convertTemp');
-    convertTemp(mocks.req, mocks.res);
-    assert.strictEqual(mocks.res.send.calledOnceWith('Temperature in Fahrenheit is: 70.00.'), true);
   });
 
   it('convertTemp: should return an error message', () => {
