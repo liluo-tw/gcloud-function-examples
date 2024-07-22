@@ -42,13 +42,13 @@ gcloud auth application-default login
 
 * Deploy a Cloud Function
 ```shell
-../scripts/deploy_function.sh nodejs-http-trigger entry
+../scripts/deploy_function.sh nodejs-http-function entry
 ```
 
 
 * Get a Cloud Function uri
 ```shell
-gcloud functions describe nodejs-http-trigger --gen2 --region us-central1 --format="value(serviceConfig.uri)"
+gcloud functions describe nodejs-http-function --gen2 --region us-central1 --format="value(serviceConfig.uri)"
 ```
 
 * Test the Cloud Function
@@ -63,5 +63,5 @@ curl CLOUD_FUNC_URL \
 
 * clean up if needed
 ```shell
-gcloud functions delete nodejs-http-trigger --gen2 --region us-central1
+gcloud functions delete nodejs-http-function --gen2 --region us-central1
 ```

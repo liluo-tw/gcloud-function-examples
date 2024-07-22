@@ -2,7 +2,7 @@
 
 if [ $# -lt 2 ]
   then
-    printf "Pls give function_name & entry_name.\nexample: ./scripts/deploy_function.sh nodejs-http-trigger entry"
+    printf "Pls give function_name & entry_name.\nexample: ./scripts/deploy_function.sh nodejs-http-function entry"
     exit 1
 fi
 
