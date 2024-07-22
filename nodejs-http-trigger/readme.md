@@ -42,15 +42,7 @@ gcloud auth application-default login
 
 * Deploy a Cloud Function
 ```shell
-gcloud functions deploy nodejs-http-trigger \
---gen2 \
---runtime=nodejs20 \
---region=us-central1 \
---source=. \
---entry-point=entry \
---memory=512MB \
---allow-unauthenticated \
---trigger-http 
+../scripts/deploy_function.sh nodejs-http-trigger entry
 ```
 
 
