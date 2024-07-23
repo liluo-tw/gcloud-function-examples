@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
     "unit-test": "mocha *.test.js --timeout=6000 --exit",
-    "start": "npx functions-framework --target=convertTemp --signature-type=http",
+    "start": "npx functions-framework --target=entry --signature-type=http",
     "test": "npm -- run unit-test"
   },
   "devDependencies": {
