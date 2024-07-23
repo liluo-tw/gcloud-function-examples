@@ -1,0 +1,20 @@
+{
+  "name": "temperature-converter",
+  "version": "0.0.1",
+  "main": "index.js",
+  "scripts": {
+    "unit-test": "mocha *.test.js --timeout=6000 --exit",
+    "start": "npx functions-framework --target=entry --signature-type=event",
+    "test": "npm -- run unit-test"
+  },
+  "devDependencies": {
+    "mocha": "^9.0.0",
+    "sinon": "^14.0.0"
+  },
+  "dependencies": {
+    "@google-cloud/functions-framework": "^3.0.0",
+    "@google-cloud/storage": "^5.18.2",
+    "@google-cloud/vision": "^2.4.2",
+    "path": "^0.12.7"
+  }
+}
